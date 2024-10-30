@@ -5,11 +5,19 @@ import './index.css'
 import './bootstrap.min.css'
 import { BrowserRouter } from 'react-router-dom'
 import ContextShare from './contexts/ContextShare.jsx'
+import AuthContext from './contexts/AuthContext.jsx'
 
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ContextShare><BrowserRouter><App /></BrowserRouter></ContextShare>
+    <AuthContext>
+      <ContextShare>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ContextShare>
+    </AuthContext>
+
   </StrictMode>,
 )

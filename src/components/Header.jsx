@@ -1,9 +1,24 @@
 import React from 'react'
 import { Navbar,Container } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
-const Header = (insideDashboard) => {
+
+
+
+const Header = ({insideDashboard}) => {
+
+  const {isAuthorised,setIsAuthorised} = useContext(tokenAuthContext)
+
+const navigate =useNavigate()
+
+
+const handleLogout = ()=>{
+  sessionStorage.clear()
+  setIsAuthorised(false)
+  navigate('/')
+}
+
   return (
     <Navbar style={{zIndex:'1'}} className="position-fixed w-100 top-0 border rounded">
     <Container>
@@ -13,7 +28,7 @@ const Header = (insideDashboard) => {
       {
         insideDashboard &&
         <div className='ms-auto'>
-          <button className='btn btn-link' >Logout<i className='fa-solid fa-right-from-bracket'></i></button>
+          <button onClick={handleLogout} className='btn btn-link' >Logout<i className='fa-solid fa-right-from-bracket'></i></button>
         </div>
       }
     </Container>

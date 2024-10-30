@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import Add from './Add'
 import Edit from './Edit'
 import { deleteProjectApi, userProjectApi } from '../sevice/allApi'
-import { addResponseContext } from '../contexts/ContextShare'
+import { addResponseContext, editResponseContext } from '../contexts/ContextShare'
 
 const View = () => {
+  const {editResponse,SetEditResponse}= useContext(editResponseContext)
 
   const {addResponse,setAddResponse} = useContext(addResponseContext)
 
@@ -12,7 +13,7 @@ const View = () => {
 
   useEffect(() => {
     getUserProjects()
-  }, [addResponse])
+  }, [addResponse,editResponse])
 
 
   console.log(userProjects);

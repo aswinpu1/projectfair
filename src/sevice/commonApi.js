@@ -10,8 +10,8 @@ const commonApi=async(httpMethod,url,reqBody,reqHeader)=>{
     return await axios(reqConfig).then(res=>{
         return res
     
-    }).catch(arr=>{
-        return arr
+    }).catch(err=>{
+        return err
     })
 }
 export default commonApi

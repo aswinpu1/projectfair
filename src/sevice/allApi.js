@@ -25,8 +25,8 @@ export const homeProjectApi = async()=>{
 
 
 //allProjectApi  called by projects
-export const allProjectApi = async(reqHeader)=>{
-   return await commonApi("GET",`${SERVERURL}/all-projects`,"",reqHeader)
+export const allProjectApi = async(searchKey,reqHeader)=>{
+   return await commonApi("GET",`${SERVERURL}/all-projects?search=${searchKey}`,"",reqHeader)
    
 }
 
@@ -41,6 +41,17 @@ export const deleteProjectApi=async(pid,reqHeader)=>{
    return await commonApi("DELETE",`${SERVERURL}/${pid}/remove-projects`,{},reqHeader)
 }
 
+
+
+//editProjectApi called by edit : "http://localhost:3000/pid/edit-project"
+export const editProjectApi=async(pid,reqBody,reqHeader)=>{
+   return await commonApi("PUT",`${SERVERURL}/${pid}/edit-project`,reqBody,reqHeader)
+}
+
+//editProjectApi called by profile : put request to "http://localhost:3000/user/edit"
+export const editUserApi=async(reqBody,reqHeader)=>{
+   return await commonApi("PUT",`${SERVERURL}/${pid}/user/edit`,reqBody,reqHeader)
+}
 
 
 
